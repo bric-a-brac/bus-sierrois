@@ -1,7 +1,45 @@
+<!DOCTYPE html>
 <html>
+<head>
+<meta charset="UTF-8"/>
+	<title>Bus Sierrois</title>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<!--
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+-->
+<link rel="stylesheet" href="//fonts.googleapis.com/css2?family=Open+Sans&amp;display=swap"/>
+<link rel="stylesheet" href="styles/styles.css"/>
+</head>
 <body>
 
-<h1>Bus Sierrois</h1>
+<header>
+	<h1>Bus Sierrois</h1>
+</header>
+
+<main id="content">
+chargement en cours
+</main>
+
+<!--
+<script src="https://mozilla.github.io/nunjucks/files/nunjucks-slim.min.js"></script>
+-->
+<script src="https://mozilla.github.io/nunjucks/files/nunjucks.min.js"></script>
+
+<script>
+
+nunjucks.configure('templates', {autoescape: true});
+
+fetch('stops.json').then(response => response.json()).then(json =>
+	{
+	let html = nunjucks.render('stops.njk', json);
+
+	document.querySelector('#content').innerHTML = html;
+	
+	//console.log(html);
+	});
+
+</script>
 
 </body>
 </html>
