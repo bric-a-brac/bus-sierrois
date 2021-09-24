@@ -4,10 +4,8 @@
 <meta charset="UTF-8"/>
 	<title>Bus Sierrois</title>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<!--
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
--->
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link rel="stylesheet" href="//fonts.googleapis.com/css2?family=Open+Sans&amp;display=swap"/>
 <link rel="stylesheet" href="styles/styles.css"/>
 </head>
@@ -23,9 +21,17 @@ chargement en cours
 
 <!--
 <script src="https://mozilla.github.io/nunjucks/files/nunjucks-slim.min.js"></script>
--->
 <script src="https://mozilla.github.io/nunjucks/files/nunjucks.min.js"></script>
+-->
 
+<!--
+<script src="scripts/geo.js"></script>
+<script src="scripts/stops.js"></script>
+-->
+
+<script type="module" src="scripts/main.mjs"></script>
+
+<!--
 <script>
 
 nunjucks.configure('templates', {autoescape: true});
@@ -40,6 +46,7 @@ fetch('stops.json').then(response => response.json()).then(json =>
 	});
 
 </script>
+-->
 
 </body>
 </html>
