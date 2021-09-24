@@ -40,7 +40,8 @@ geo.startGeoLocation();
 
 //setTimeout(() => console.log(stops), 3000);
 
-fetch('../stops.json').then(response => response.json()).then(json =>
+//fetch('../stops.json').then(response => response.json()).then(json =>
+fetch('https://bric-a-brac.github.io/bus-sierrois/stops.json').then(response => response.json()).then(json =>
 	{
 	stops = [];
 
