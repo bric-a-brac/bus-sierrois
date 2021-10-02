@@ -4,40 +4,53 @@ function degreesToRadians(degrees)
 	return degrees * Math.PI / 180;
 	}
 
-function distanceInKmBetweenEarthCoordinates(lat1, lon1, lat2, lon2)
+function distanceBetweenCoordinates(latitude1, longitude1, latitude2, longitude2)
 	{
-	var earthRadiusKm = 6371;
-	//const earthRadiusKm = 6371e3;
+	const RADIUS = 6371e3;
 
-	var dLat = degreesToRadians(lat2 - lat1);
-	let dLon = degreesToRadians(lon2 - lon1);
-	lat1 = degreesToRadians(lat1);
-	lat2 = degreesToRadians(lat2);
+	let deltaLatitude = degreesToRadians(latitude2 - latitude1);
+	let deltaLongitude = degreesToRadians(longitude2 - longitude1);
 
-	var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) + Math.sin(dLon / 2) * Math.sin(dLon / 2) * Math.cos(lat1) * Math.cos(lat2);
+	latitude1 = degreesToRadians(latitude1);
+	latitude2 = degreesToRadians(latitude2);
 
-	var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+	let a = Math.sin(deltaLatitude / 2) * Math.sin(deltaLatitude / 2) + Math.sin(deltaLongitude / 2) * Math.sin(deltaLongitude / 2) * Math.cos(latitude1) * Math.cos(latitude2);
 
-	return earthRadiusKm * c;
+	let c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+
+	return RADIUS * c;
 	}
 
-function distanceBetweenCoordinates(lat1, lon1, lat2, lon2)
+/**
+ * @version 0.1.0
+ * @since 0.1.0
+ */
+class Coordinate
 	{
-	return distanceInKmBetweenEarthCoordinates(lat1, lon1, lat2, lon2);
+	constructor(latitude, longitude)
+		{
+		this.latitude = latitude;
+		this.longitude = longitude;
+		}
+
+	distance(coordinate)
+		{
+		return Coordinate.distanceBetween(this, coordinate);
+		}
+
+	static distanceBetween(coordinate1, coordinate2)
+		{
+		return distanceBetweenCoordinates(coordinate1.latitude, coordinate1.longitude, coordinate2.latitude, coordinate2.longitude);
+		}
 	}
 
-export class Geo
+class Geo
 	{
 	constructor()
 		{
 		this.watchId = null;
 		}
 
-	distance(lat1, lon1, lat2, lon2)
-		{
-		return distanceBetweenCoordinates(lat1, lon1, lat2, lon2);
-		}
-	
 	startGeoLocation()
 		{
 		/*
@@ -51,6 +64,7 @@ var options =
 
 		let onSuccess = function(position)
 			{
+			// TODO new Coordinate()
 			let coordinate = {latitude: position.coords.latitude, longitude: position.coords.longitude};
 
 			window.document.dispatchEvent(new CustomEvent('geo-coordinate', {detail: coordinate}));
@@ -72,3 +86,5 @@ var options =
 			}
 		}
 	};
+
+export {Coordinate, Geo};

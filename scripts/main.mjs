@@ -1,9 +1,8 @@
 
-//import {BusSierrois} from './bs.mjs';
-//(new BusSierrois()).dev();
-
+import {BusSierrois} from './bus-sierrois.mjs';
 import {Geo} from './geo.mjs';
 
+const BS = new BusSierrois();
 const geo = new Geo();
 
 let stops = null;
