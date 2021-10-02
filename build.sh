@@ -15,5 +15,15 @@ curl -X POST -s --data-urlencode 'input@docs/styles/light.css' https://cssminifi
 
 cat temp/layout-mobile.min.css newline temp/light.min.css > docs/styles/styles.min.css
 
+# Templates
+
+cd templates
+
+nunjucks-precompile stops.njk > ../temp/template-stops.js
+
 #nunjucks-precompile templates/stops.njk > scripts/templates.min.js
 #nunjucks-precompile templates/stops-dev.njk > scripts/templates-dev.min.js
+
+cd ..
+
+cat temp/template-stops.js newline > docs/scripts/templates.min.js
