@@ -1,11 +1,13 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
 <meta charset="UTF-8"/>
 	<title>Bus Sierrois</title>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <link rel="stylesheet" type="text/css" href="styles/styles.css"/>
-<link rel="icon" type="image/png" href="favicon.png"/>
+<!-- .ico auto ne fonctionne pas car pas à la racine ? -->
+<!-- TODO tailles (et renommer logo par ex.) -->
+<link rel="icon" type="image/png" href="images/favicon.png"/>
 </head>
 <body>
 
@@ -13,8 +15,19 @@
 	<h1>Bus Sierrois</h1>
 </header>
 
-<script src="https://mozilla.github.io/nunjucks/files/nunjucks.min.js"></script>
+<main id="content">
+</main>
+
+<script>
+function el(id){return document.querySelector(id);}
+function on(element, eventName, callback){element.addEventListener(eventName, callback, false);}
+function onClick(id, callback){on(el(id), 'click', callback);}
+</script>
+
+<script src="//mozilla.github.io/nunjucks/files/nunjucks.min.js"></script>
 <script src="scripts/templates.min.js"></script>
+
+<script type="module" src="scripts/main.mjs"></script>
 
 </body>
 </html>

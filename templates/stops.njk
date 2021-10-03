@@ -1,8 +1,16 @@
 
-<!--
-{{ type }}
--->
 
+<ul class="stops">
+{% for stop in stops %}
+	<li id="stop-{{ stop.id }}" class="stop">
+		<b>{{ stop.name }}</b>
+		<span id="stop-{{ stop.id }}-distance">aa {{ stop.distance }}</span>
+	</li>
+{% endfor %}
+</ul>
+
+
+<!--
 <ul class="stops">
 {% for feature in features %}
 	<li>
@@ -10,3 +18,4 @@
 	</li>
 {% endfor %}
 </ul>
+-->

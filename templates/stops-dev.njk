@@ -1,24 +1,9 @@
 
-<ul class="stops">
-{% for stop in stops %}
-	<li id="stop-{{ stop.id }}" class="stop">
-	{{ stop.id }}<br/>
-	{{ stop.name }}<br/>
-	{{ stop.coordinate.latitude }}, {{ stop.coordinate.longitude }}<br/>
-	<span id="stop-{{ stop.id }}-distance">aa {{ stop.distance }}</span>
-	</li>
-{% endfor %}
-</ul>
 
-<!--
-<ul class="stops">
-{% for feature in features %}
-	<li class="stop">
-	{{ feature.properties.name }}
-	</li>
-{% endfor %}
-</ul>
--->
+{{ stop.id }}<br/>
+
+{{ stop.coordinate.latitude }}, {{ stop.coordinate.longitude }}<br/>
+
 
 <!--
 <svg id="pluar" width="100px" height="600px" viewBox="0 0 100 600">
