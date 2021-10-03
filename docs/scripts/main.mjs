@@ -23,11 +23,13 @@ function featuresToStops(collection)
 	return collection.features.map(featureToStop);
 	}
 
+// TODO Seulement si les arrêts de bus sont affichés !!!!!!!!!
 function updateStopsDistance()
 	{
 	stops.forEach(stop =>
 		{
-		el('#stop-' + stop.id + '-distance').textContent = stop.distance;
+		// TODO m / km
+		el('#stop-' + stop.id + '-distance').textContent = stop.distance + ' m';
 		});
 	}
 
@@ -76,13 +78,15 @@ let fetchOnSuccess = json =>
 
 	UI.render('stops', {'stops': stops});
 
+	// TODO try/catch ou CustomEvent
 	geo.startGeoLocation(coordinate =>
 		{
-		console.log(coordinate);
+		//console.log(coordinate);
 
 		stops.forEach(stop =>
 			{
-			stop.distance = Coordinate.distanceBetween(coordinate, stop.coordinate);
+			// TODO m / km
+			stop.distance = parseInt(Coordinate.distanceBetween(coordinate, stop.coordinate) * 1000);
 			});
 
 		updateStopsDistance();
@@ -96,6 +100,19 @@ let fetchOnFailure = error =>
 
 fetch('bus-sierrois.json').then(response => response.json()).then(fetchOnSuccess, fetchOnFailure);
 
+
+on(document.body, 'click', e =>
+	{
+	//document.body.classList.toggle
+	el('#progress').classList.toggle('loading');
+	});
+
+
+// TODO Pas alert !!!!!!!!!
+on(document, 'error-geolocation-permission-denied', error =>
+	{
+	alert('error-geolocation-permission-denied');
+	});
 
 
 

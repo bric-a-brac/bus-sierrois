@@ -1,6 +1,7 @@
 
 :root
 	{
+	font-family: sans-serif;
 	font-size: 16px;
 	}
 
@@ -11,13 +12,17 @@ body
 
 header
 	{
-	padding: 1rem;
+	padding-top: 3px;
 	border-bottom-width: 3px;
 	border-bottom-style: solid;
+	/*position: relative;*/
+	top: 0;
+	position: sticky;
 	}
 
 header h1
 	{
 	line-height: 1;
 	margin: 0;
+	padding: 1rem;
 	}

@@ -1,4 +1,6 @@
 
+import {UI} from './ui.mjs';
+
 function degreesToRadians(degrees)
 	{
 	return degrees * Math.PI / 180;
@@ -58,6 +60,17 @@ class Geo
 		let onError = error =>
 			{
 			console.log(error);
+
+			// TODO Autres erreurs aussi hein ;-) !!!!!!!!!!!
+
+			if (error.code === GeolocationPositionError.PERMISSION_DENIED)
+				{
+				// TODO Error
+				//throw new Error('PERMISSION_DENIED');
+				// Ou alors CustomEvent...
+				//document.dispatchEvent(new CustomEvent('error-geolocation-permission-denied'));
+				UI.dispatch('error-geolocation-permission-denied');
+				}
 			};
 
 		this.watchId = navigator.geolocation.watchPosition(onSuccess, onError, {enableHighAccuracy: true});

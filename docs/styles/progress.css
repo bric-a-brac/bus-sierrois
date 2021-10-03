@@ -1,0 +1,61 @@
+
+/*
+@keyframes animation-progress
+	{
+	0%
+		{
+		transform: translate(0, 0);
+		}
+	50%
+		{
+		transform: translate(100%, 0);
+		}
+	50.01%
+		{
+		transform: translate(-100%, 0);
+		}
+	100%
+		{
+		transform: translate(0, 0);
+		}
+	}
+*/
+
+@keyframes animation-progress
+	{
+	0%
+		{
+		transform: translate(0, 0);
+		}
+	100%
+		{
+		transform: translate(100%, 0);
+		}
+	}
+
+#progress
+	{
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 3px;
+	/*
+	position: relative;
+	top: 3px;
+	*/
+	position: absolute;
+	bottom: -3px;
+	display: none;
+	}
+
+#progress.loading
+	{
+	display: block;
+	}
+
+.progressbar
+	{
+	animation-name: animation-progress;
+	animation-duration: 4s;
+	animation-iteration-count: infinite;
+	}

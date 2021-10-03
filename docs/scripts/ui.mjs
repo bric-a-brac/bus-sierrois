@@ -17,6 +17,12 @@ class UI
 		}
 	*/
 
+	// TODO Passer Init
+	static dispatch(eventName)
+		{
+		document.dispatchEvent(new CustomEvent(eventName));
+		}
+
 	static render(template, data)
 		{
 		document.querySelector('#content').innerHTML = nunjucks.render(template + '.njk', data);
