@@ -1,0 +1,11 @@
+{
+"name": "bussierrois",
+"version": "0.1.0",
+"author": "",
+"license": "ISC",
+"devDependencies":
+  {
+  "gulp": "^4.0.2",
+  "gulp-nunjucks": "^5.1.0"
+  }
+}
