@@ -94,19 +94,8 @@ function onClick(id, callback){on(el(id), 'click', callback);}
 <script type="module" src="scripts/main.mjs"></script>
 
 <script>
-/*
-on(document, 'swiped-left', e =>
-	{
-	console.log(e.target);
-	console.log(e.detail);
-	});
-*/
-document.addEventListener('swiped-left', function(e)
-	{
-	console.log(e.target); // element that was swiped
-	console.log(e.detail); // event data { dir: 'left', xStart: 196, xEnd: 230, yStart: 196, yEnd: 4 }
-	el('#menu').classList.toggle('open');
-	});
+on(document, 'swiped-right', e => {el('#menu').classList.add('open');});
+on(document, 'swiped-left', e => {el('#menu').classList.remove('open');});
 </script>
 
 </body>
